@@ -1,0 +1,14 @@
+.npm-input-with-text {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.npm-input-with-text-span {
+  font-size: 16px;
+}
+
+.npm-input-with-text-cont {
+  width: 250px;
+}

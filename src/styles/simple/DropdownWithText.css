@@ -1,0 +1,10 @@
+.npm-dropdown-with-text {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.npm-dropdown-with-text-span {
+  font-size: 16px;
+}

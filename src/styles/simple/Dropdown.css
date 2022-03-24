@@ -1,0 +1,41 @@
+.dropdown-main-cont {
+  /* max-width: 100%;  */
+  position: relative;
+}
+
+.dropdown-cont {
+  position: relative;
+  width: 250px;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.dropdown-menu-cont {
+  right: 0;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+.dropdown-menu-cont.hidden {
+  display: none;
+}
+
+.dropdown-menu {
+  overflow-y: auto;
+  max-height: 283px;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  opacity: 0.5;
+}
+
+.dropdown-input {  
+  pointer-events: none;
+  width: 100%;
+}

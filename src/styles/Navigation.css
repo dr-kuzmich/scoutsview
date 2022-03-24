@@ -1,0 +1,27 @@
+.main-navigation {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-navigation-buttons {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-navigation-home {
+  padding: 16px 16px 0 0;
+}
+
+.main-navigation-about {
+  padding: 16px 16px 0 0;    
+}
+
+.main-navigation-button {
+  width: 260px;
+}
+
