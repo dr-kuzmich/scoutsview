@@ -1,0 +1,19 @@
+.dashboard-contaiter {
+  padding: 10px 10px;
+  border: 1px solid #000000;
+  flex: 50%;
+}
+
+.dashboard-shots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-shots-text {
+  
+}
+
+.dashboard-shots-steppers {
+  display: flex;
+  column-gap: 10px;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/simple/DropdownWithText.css";
-import { SimpleObject} from "../../types";
+import { SimpleObject } from "../../types";
 import Dropdown from "./Dropdown";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
   setSelectedId: (value: string) => void;
 }
 
-const DropdownWithText = ({text, values, placeholder, selectedId, setSelectedId}: Props) => {  
+const DropdownWithText = ({ text, values, placeholder, selectedId, setSelectedId }: Props) => {
   return (
     <div className="npm-dropdown-with-text">
       <span className="npm-dropdown-with-text-span">{text}</span>

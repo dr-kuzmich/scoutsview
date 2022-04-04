@@ -1,11 +1,10 @@
 import React from "react";
+import bgImage from "../img/soccer.png";
 import "../styles/App.css";
-import Navigation from "./Navigation";
-import bgImage from '../img/soccer.png';
 import "../styles/Home.css";
+import Navigation from "./Navigation";
 
-const Home = () => {  
-  
+const Home = () => {
   return (
     <div className="sv-page">
       <div className="home-image">

@@ -6,17 +6,16 @@ import Report from "./Report";
 import TTA from "./tta/TTA";
 
 const Main = () => {
-
-	return (
-		<>			
-			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/tta' element={<TTA />} />
-				<Route path='/report' element={<Report />} />
-				<Route path='/about' element={<About />} />
-			</Routes>      
-		</>
-	);
+  return (
+    <>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/tta' element={<TTA />} />
+        <Route path='/report' element={<Report />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
+    </>
+  );
 };
 
 export default Main;

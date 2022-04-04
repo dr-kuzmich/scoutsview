@@ -7,8 +7,7 @@ interface Props {
   onChange: (value: ChangeEvent<HTMLInputElement>) => void
 }
 
-const InputWithText = ({text, placeholder, onChange}: Props) => {  
-  
+const InputWithText = ({ text, placeholder, onChange }: Props) => {
   return (
     <div className="npm-input-with-text">
       <span className="npm-input-with-text-span">{text}</span>

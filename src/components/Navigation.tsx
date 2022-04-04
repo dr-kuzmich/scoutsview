@@ -3,11 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import "../styles/Navigation.css";
 
 const Navigation = () => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   const mainNavigation = () => {
     return (
-      <>        
+      <>
         <div className="main-navigation">
           <div className="main-navigation-buttons">
             <div className="ui large buttons">
@@ -54,7 +54,7 @@ const Navigation = () => {
       </div>
     );
   };
-  
+
   return (
     <div>
       {pathname === "/" ? mainNavigation() : otherNavigation()}

@@ -1,0 +1,18 @@
+.stepper-cont {
+  display: table-row;
+}
+
+.stepper-button {
+  display: table-cell;
+  cursor: pointer;
+}
+
+.stepper-text {
+  width: 18px;
+  display: table-cell;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

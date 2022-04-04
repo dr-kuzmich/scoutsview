@@ -3,10 +3,6 @@
   justify-content: center;
 }
 
-.tta-container {
-
-}
-
 .tta-teams {
   font-size: 20px;
   padding: 10px 10px;
@@ -14,35 +10,4 @@
 
 .tta-players-and-tools {
   display: flex;
-}
-
-.tta-players {
-  flex-grow: 1;
-  padding: 10px 10px;
-  border: 1px solid #000000;
-}
-
-.tta-player {
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.tta-player.selected {
-  color: blue;
-  font-weight: bold;
-}
-
-.tta-button-container-add-player {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.tta-button-add-player {
-  width: 120px; 
-}
-
-.tta-tools {
-  flex-grow: 1;
-  padding: 10px 10px;
-  border: 1px solid #000000;
 }

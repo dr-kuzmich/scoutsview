@@ -1,0 +1,24 @@
+.playerlist-players {
+  padding: 10px 10px;
+  border: 1px solid #000000;
+  flex: 50%;
+}
+
+.playerlist-player {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.playerlist-player.selected {
+  color: blue;
+  font-weight: bold;
+}
+
+.playerlist-button-container-add-player {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playerlist-button-add-player {
+  width: 120px; 
+}
