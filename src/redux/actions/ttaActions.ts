@@ -1,4 +1,4 @@
-import { Match, Player, Team } from "../types";
+import { Match, Player, Team } from "../../types";
 
 const setMatch = (value: Match) => {
   return {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "./app/store";
+import { AppDispatch, RootState } from "./redux/store";
 
 export const useModal = () => {
   const [isShowing, setIsShowing] = useState(false);

@@ -1,3 +1,7 @@
+# About
+
+I work on this project in my spare time. This is an application for football scouts. At the moment, the app is far from complete. Terefore if you find something strange in the code, don't be surprised ;-) For example, the use of a module here is debatable. But this application is not made for sale or something, but for refreshing knowledge and practice.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,9 +1,8 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { Match, Player, Team, TTA } from "../types";
+import { Match, Player, Team, TTA } from "../../types";
 
 const initialState: TTA = { match: undefined, teams: undefined, players: [] };
 
-// const ttaReducer = (state = <TTA>{}, action: AnyAction) => {
 const ttaReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
   case "SET_MATCH":

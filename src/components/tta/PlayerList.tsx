@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { sortBy } from "lodash";
 import React from "react";
-import allActions from "../../actions/allActions";
+import allActions from "../../redux/actions/allActions";
 import { useAppDispatch } from "../../hooks";
 import "../../styles/tta/PlayerList.css";
 import { Player } from "../../types";
@@ -15,7 +15,7 @@ interface Props {
 
 const PlayerList = ({ players, selectedPlayer, setSelectedPlayer, toggle }: Props) => {  
   const dispatch = useAppDispatch();
-  const updatePlayer = () => selectedPlayer && (dispatch(allActions.matchActions.updatePlayer(selectedPlayer)));
+  const updatePlayer = () => selectedPlayer && (dispatch(allActions.ttaActions.updatePlayer(selectedPlayer)));
 
   return (
     <div className="playerlist-players">

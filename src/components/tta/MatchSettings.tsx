@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import React, { useState } from "react";
-import allActions from "../../actions/allActions";
+import allActions from "../../redux/actions/allActions";
 import { useAppDispatch } from "../../hooks";
 import "../../styles/tta/MatchSettings.css";
 
@@ -40,8 +40,8 @@ const MatchSettings = () => {
       <div className="tta-match-settings-button-container">
         <button className={classnames("ui button tta-match-settings-button", !(team0Name.length && team1Name.length) && "disabled")}
           onClick={() => {
-            dispatch(allActions.matchActions.setMatch({ team0Id: "team_0", team1Id: "team_1", date, place, weather }));
-            dispatch(allActions.matchActions.setTeams([{ id: "team_0", value: team0Name }, { id: "team_1", value: team1Name }]));
+            dispatch(allActions.ttaActions.setMatch({ team0Id: "team_0", team1Id: "team_1", date, place, weather }));
+            dispatch(allActions.ttaActions.setTeams([{ id: "team_0", value: team0Name }, { id: "team_1", value: team1Name }]));
           }}>
           {"Let's go!"}
         </button>

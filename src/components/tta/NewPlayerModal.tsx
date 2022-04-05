@@ -2,7 +2,7 @@ import classnames from "classnames";
 import { uniqueId } from "lodash";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import allActions from "../../actions/allActions";
+import allActions from "../../redux/actions/allActions";
 import { useAppDispatch } from "../../hooks";
 import "../../styles/App.css";
 import "../../styles/tta/NewPlayerModal.css";
@@ -54,7 +54,7 @@ const NewPlayerModal = ({ teams, positions, isShowing, setSelectedPlayer }: Prop
                       shotsSuccessful: 0,
                       shotsMistaken: 0,
                     };
-                    dispatch(allActions.matchActions.addPlayer(player));
+                    dispatch(allActions.ttaActions.addPlayer(player));
                     setSelectedPlayer(player);
                   }
                 }}>
