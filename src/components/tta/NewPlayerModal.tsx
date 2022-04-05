@@ -37,9 +37,10 @@ const NewPlayerModal = ({ teams, positions, isShowing, setSelectedPlayer }: Prop
             <div className="sv-modal-header">
               <h3 className="ui header">Add a new player</h3>
             </div>
-            <InputWithText text="Name" placeholder="Cristiano Ronaldo" onChange={v => setName(v.target.value)}/>
-            <DropdownWithText text="Team" values={teams} placeholder="Manchester United" selectedId={teamId} setSelectedId={setTeamId}/>
-            <DropdownWithText text="Position" values={positions} placeholder="CF" selectedId={positionId} setSelectedId={setPositionId}/>
+            <InputWithText text="Name" placeholder="Enter a name" onChange={v => setName(v.target.value)}/>
+            <DropdownWithText text="Team" values={teams} placeholder="Select a team" selectedId={teamId} setSelectedId={setTeamId}/>
+            <DropdownWithText text="Position" values={positions} placeholder="Select a position"
+              selectedId={positionId} setSelectedId={setPositionId}/>
             <div className="npm-modal-button-container">
               <button className={classnames("ui button npm-modal-button", !(name.length && teamId && positionId) && "disabled")}
                 onClick={() => {

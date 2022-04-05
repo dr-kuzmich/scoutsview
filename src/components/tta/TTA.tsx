@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useAppSelector, useModal, usePositions } from "../../hooks";
+import React, { useContext, useEffect, useState } from "react";
+import { useAppSelector, useModal } from "../../hooks";
 import "../../styles/App.css";
 import "../../styles/tta/TTA.css";
 import { Player } from "../../types";
@@ -8,17 +8,16 @@ import MatchSettings from "./MatchSettings";
 import NewPlayerModal from "./NewPlayerModal";
 import PlayerList from "./PlayerList";
 import Dashboard from "./Dashboard";
+import { SettingsContext } from "../../App";
 
 const TTA = () => {
   const [selectedPlayer, setSelectedPlayer] = useState<Player>();
 
   const { isShowing, toggle } = useModal();
-  const positions = usePositions();
+  const { positions } = useContext(SettingsContext);
 
   // TODO Look at shallowEqual when I change match and teams after their creation
   const { match, teams, players } = useAppSelector(state => state.tta);
-
-  console.log("players", players);
 
   useEffect(() => {
     toggle(!!match && !players.length);

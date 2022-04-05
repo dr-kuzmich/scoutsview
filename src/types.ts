@@ -26,7 +26,9 @@ export interface SimpleObject {
   value: string;
 }
 
-export type Position = SimpleObject;
+export interface Position extends SimpleObject {
+  short: string;
+}
 
 export interface Team extends SimpleObject {
   color?: number;
