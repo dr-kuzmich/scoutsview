@@ -4,16 +4,25 @@
   flex: 50%;
 }
 
-.dashboard-shots {
-  display: flex;
-  justify-content: space-between;
+.dashboard-lines-cont {
+
 }
 
-.dashboard-shots-text {
+.dashboard-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.dashboard-line-text {
   
 }
 
-.dashboard-shots-steppers {
+.dashboard-line-steppers {
   display: flex;
   column-gap: 10px;
+}
+
+.dashboard-result {
+  margin-top: 18px;
 }

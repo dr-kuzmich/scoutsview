@@ -1,4 +1,5 @@
 type DashboardMode = "brief" | "full";
+type PlayerStatus = "new" | "process" | "finished";
 
 export interface Settings { 
   dashboardMode: { 
@@ -37,6 +38,15 @@ export interface Team extends SimpleObject {
 export interface Player extends SimpleObject {
   teamId: string;
   position: Position;
+  status: PlayerStatus;
   shotsSuccessful: number;
   shotsMistaken: number;
+  passesSuccessful: number;
+  passesMistaken: number;
+  airDuelsSuccessful: number;
+  airDuelsMistaken: number;
+  dribblingsSuccessful: number;
+  dribblingsMistaken: number;
+  tacklesSuccessful: number;
+  tacklesMistaken: number;
 }

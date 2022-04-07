@@ -51,8 +51,17 @@ const NewPlayerModal = ({ teams, positions, isShowing, setSelectedPlayer }: Prop
                       value: name,
                       teamId: team.id,
                       position: positions.find(p => p.id === positionId) || positions[0],
+                      status: "new",
                       shotsSuccessful: 0,
                       shotsMistaken: 0,
+                      passesSuccessful: 0,
+                      passesMistaken: 0,
+                      airDuelsSuccessful: 0,
+                      airDuelsMistaken: 0,
+                      dribblingsSuccessful: 0,
+                      dribblingsMistaken: 0,
+                      tacklesSuccessful: 0,
+                      tacklesMistaken: 0,
                     };
                     dispatch(allActions.ttaActions.addPlayer(player));
                     setSelectedPlayer(player);
