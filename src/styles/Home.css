@@ -5,3 +5,10 @@
   transform: translate(-50%, -50%);
   opacity: 0.15;
 }
+
+.home-top-scorers {
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
