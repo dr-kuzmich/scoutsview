@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../styles/simple/Dropdown.css";
 import { SimpleObject } from "../../types";
 import { addMouseDownListener } from "../../utils";
@@ -14,8 +14,8 @@ interface Props {
 const Dropdown = ({ values, placeholder, selectedId, setSelectedId }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const ref = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => (!ref.current?.contains(event.target as Node)) && setIsVisible(false);
     return addMouseDownListener(window, "mousedown", handleClickOutside);
   }, []);

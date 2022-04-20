@@ -17,7 +17,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         loader: "ts-loader",
-        exclude: /node_modules/ 
+        exclude: /node_modules/, 
       },
       {
         enforce: "pre",
@@ -30,11 +30,11 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i, 
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: 'img/[name].[ext]'
-        }
-      }
+          name: "img/[name].[ext]",
+        },
+      },
     ],
   },
   plugins: [

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./redux/store";
 
@@ -6,10 +6,47 @@ export const useModal = () => {
   const [isShowing, setIsShowing] = useState(false);
   const toggle = (value: boolean) => setIsShowing(value);
 
-  return {
-    isShowing,
-    toggle,
+  return { isShowing, toggle };
+};
+
+export const useMovable = (x: number, y: number) => {
+  const [dragModeEnabled, setDragMode] = useState(false);
+  const [initCoord, setInitCoord] = useState({ x, y });
+  const [newCoord, setNewCoord] = useState({ x: initCoord.x, y: initCoord.y });
+  const [clickPoint, setClickPoint] = useState({ x: 0, y: 0 });
+
+  const divRef = useRef<HTMLDivElement>(null);
+ 
+  const enableDragMode = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setClickPoint({ x: e.clientX, y: e.clientY });
+    setDragMode(true);    
   };
+
+  const disableDragMode = () => {
+    setDragMode(false);
+    setInitCoord({x: newCoord.x, y: newCoord.y});
+  };
+
+  const moveAt = (pageX: number, pageY: number) => {
+    const x = pageX - clickPoint.x + initCoord.x;
+    const y = pageY - clickPoint.y + initCoord.y;
+    if(x < 0 || x > document.documentElement.clientWidth - (divRef.current?.clientWidth ?? 0) ||
+      y < 0 || y > document.documentElement.clientHeight - (divRef.current?.clientHeight ?? 0))
+      return;
+
+    setNewCoord({ x, y });
+  };
+
+  const onMouseMove = (e: MouseEvent) => {     
+    dragModeEnabled && moveAt(e.pageX, e.pageY);
+  };  
+
+  useEffect(() => {
+    document.addEventListener("mousemove", onMouseMove, false); 
+    return () => document.removeEventListener("mousemove", onMouseMove, false);    
+  }, [dragModeEnabled]);
+
+  return { divRef, newCoord, enableDragMode, disableDragMode };
 };
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -5,8 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import store from "./redux/store";
 
-// const store = createStore(rootReducer);
-
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

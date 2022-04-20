@@ -1,0 +1,11 @@
+.bpw-top-scorers {
+  position: absolute;
+  width: 250px;
+  height: 100px;
+  padding: 10px;
+  background: rgb(224, 225, 226);
+}
+
+.bpw-top-scorers-names {
+  cursor: default;
+}
