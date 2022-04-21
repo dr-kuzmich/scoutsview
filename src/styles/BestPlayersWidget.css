@@ -1,11 +1,73 @@
+.bpw-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .bpw-top-scorers {
   position: absolute;
-  width: 250px;
+  width: 240px;
   height: 100px;
   padding: 10px;
   background: rgb(224, 225, 226);
+  border: 1px solid rgb(124, 124, 124);
+  border-radius: 5px;
 }
 
-.bpw-top-scorers-names {
+.bpw-photo-and-data {
+  display: flex;
+}
+
+.bpw-league {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bpw-photo {
+  height: 60px;
+}
+
+.bpw-data {
   cursor: default;
+  margin-left: 10px;
+}
+
+.bpw-name {
+  cursor: default;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.bpw-club {
+  cursor: default;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.bpw-goals {
+  cursor: default;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.bpw-logo-and-name {
+  display: flex;
+}
+
+.bpw-logo {
+  height: 14px;
+  padding-right: 3px;
+}
+
+.bpw-league-name {
+  cursor: default;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.bpw-flags {
+  padding-top: 1px;
+  cursor: pointer;
 }
