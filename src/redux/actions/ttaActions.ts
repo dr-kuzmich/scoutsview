@@ -1,31 +1,9 @@
+import { createAction } from "@reduxjs/toolkit";
 import { Match, Player, Team } from "../../types";
 
-const setMatch = (value: Match) => {
-  return {
-    type: "SET_MATCH",
-    payload: value,
-  };
-};
-
-const setTeams = (value: Team[]) => {
-  return {
-    type: "SET_TEAMS",
-    payload: value,
-  };
-};
-
-const addPlayer = (value: Player) => {
-  return {
-    type: "ADD_PLAYER",
-    payload: value,
-  };
-};
-
-const updatePlayer = (value: Player) => {
-  return {
-    type: "UPDATE_PLAYER",
-    payload: value,
-  };
-};
+const setMatch = createAction<Match>("SET_MATCH");
+const setTeams = createAction<Team[]>("SET_TEAMS");
+const addPlayer = createAction<Player>("ADD_PLAYER");
+const updatePlayer = createAction<Player>("UPDATE_PLAYER");
 
 export default { setMatch, setTeams, addPlayer, updatePlayer };

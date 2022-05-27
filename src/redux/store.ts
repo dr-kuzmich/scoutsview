@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ttaReducer from "./reducers/matchReducer";
+import apiReducer from "./reducers/apiReducer";
+import ttaReducer from "./reducers/ttaReducer";
 
 const store = configureStore({
   reducer: {
+    api: apiReducer,
     tta: ttaReducer,
   },
 });

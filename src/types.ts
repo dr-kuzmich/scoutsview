@@ -1,5 +1,6 @@
 type DashboardMode = "brief" | "full";
 type PlayerStatus = "new" | "process" | "finished";
+type LoadingStatus = "idle" | "pending";
 
 export interface Settings { 
   dashboardMode: { 
@@ -49,4 +50,32 @@ export interface Player extends SimpleObject {
   dribblingsMistaken: number;
   tacklesSuccessful: number;
   tacklesMistaken: number;
+}
+
+interface LoadingData {
+  loading: LoadingStatus,
+  currentRequestId?: string,
+  error?: string,
+}
+
+export interface TopscorersLoadingData extends LoadingData {
+  topscorers: Topscorers;  
+}
+
+export interface Topscorers {
+  [key: string]: Topscorer
+}
+
+export interface Topscorer {
+  photo: string;
+  name: string;
+  club: string;
+  goals: number;
+  league: string;
+  logo: string;
+}
+
+export interface Tournament {
+  id: number;
+  flag: string;
 }

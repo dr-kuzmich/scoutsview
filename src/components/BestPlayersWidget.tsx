@@ -1,92 +1,75 @@
-import axios from "axios";
+import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
-import { useMovable } from "../hooks";
+import { useAppDispatch, useAppSelector, useMovable } from "../hooks";
+import allActions from "../redux/actions/allActions";
 import "../styles/BestPlayersWidget.css";
+import { Topscorer } from "../types";
+import { leagues } from "../utils";
 
-// https://www.api-football.com/ & https://dashboard.api-football.com/
-const API_KEY = "92a8954a5629cc302e02cbb2074324da";
-interface TopScorer {
-  photo: string;
-  name: string;
-  club: string;
-  goals: number;
-  league: string;
-  logo: string;
+interface LoadingStatus {
+  error: string,
+  loading: boolean,
 }
 
-interface Tournament {
-  id: number,
-  flag: string
-}
-
-const leagues: Tournament[] = [
-  {id: 39, flag: "england"}, 
-  {id: 140, flag: "spain"}, 
-  {id: 135, flag: "italy"}, 
-  {id: 78, flag: "germany"}, 
-  {id: 61, flag: "france"},
-];
+const message = (text: string) => <div className="bpw-message">{text}</div>;
 
 const BestPlayersWidget = () => {
-  const [topScorer, setTopScorer] = useState<TopScorer>();
+  const [loadingStatus, setLoadingStatus] = useState<LoadingStatus>({error: "", loading: false});
+  const [topscorer, setTopscorer] = useState<Topscorer>();
   const [leagueId, setLeagueId] = useState(leagues[0].id);
 
+  const dispatch = useAppDispatch();
+
+  const topscorersLoadingData = useAppSelector(state => state.api);
+
+  // TODO Calculate a valid year
   useEffect(() => {
-    console.log("leagueIndex", leagueId);
-    axios.get("https://v3.football.api-sports.io/players/topscorers?season=2021&league=" + leagueId,
-      {
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-rapidapi-key": API_KEY,
-        },
-      })
-      .then(response => {
-        console.log(response);
-        console.log(response.data.response[0]);
-        setTopScorer({ 
-          photo: response.data.response[0].player.photo, 
-          name: `${response.data.response[0].player.firstname} ${response.data.response[0].player.lastname}`, 
-          club: response.data.response[0].statistics[0].team.name,
-          goals: response.data.response[0].statistics[0].goals.total, 
-          league: response.data.response[0].statistics[0].league.name, 
-          logo: response.data.response[0].statistics[0].league.logo, 
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, [leagueId]);
+    isEmpty(topscorersLoadingData.topscorers) && dispatch(allActions.apiActions.addTopscorers(2021));
+  }, []);
+
+  useEffect(() => {
+    setLoadingStatus({error: topscorersLoadingData.error || "", loading: topscorersLoadingData.loading === "pending"});
+  }, [topscorersLoadingData.error, topscorersLoadingData.loading]);
+
+  useEffect(() => {
+    if (!isEmpty(topscorersLoadingData.topscorers)) {
+      setTopscorer(topscorersLoadingData.topscorers[leagueId]);
+    } 
+  }, [leagueId, topscorersLoadingData.topscorers]);
 
   const { divRef, newCoord, enableDragMode, disableDragMode } = useMovable(90, 20);
 
   return (
     <div ref={divRef} className="bpw-top-scorers" style={{left: newCoord.x + "px", top: newCoord.y + "px"}}
-      onMouseDown={enableDragMode} onMouseUp={disableDragMode}>
-      {!topScorer ? <div>No data from API</div> :
-        <div className="bpw-container">
-          <div className="bpw-photo-and-data">
-            <img className="bpw-photo" src={topScorer.photo} />
-            <div className="bpw-data">              
-              <div className="bpw-name">{topScorer.name}</div>
-              <div className="bpw-club">{topScorer.club}</div>
-              <div className="bpw-goals">{`${topScorer.goals} goals`}</div>
+      onMouseDown={enableDragMode} onMouseUp={disableDragMode}
+    >
+      {loadingStatus.loading ? message("Data is loading. Please wait") : 
+        loadingStatus.error.length ? message(loadingStatus.error) : 
+          !topscorer ? message("No data from server") :
+            <div className="bpw-container">
+              <div className="bpw-photo-and-data">
+                <img className="bpw-photo" src={topscorer.photo} />
+                <div className="bpw-data">              
+                  <div className="bpw-name">{topscorer.name}</div>
+                  <div className="bpw-club">{topscorer.club}</div>
+                  <div className="bpw-goals">{`${topscorer.goals} goals`}</div>
+                </div>
+              </div>
+              <div className="bpw-league">
+                <div className="bpw-logo-and-name">
+                  <img className="bpw-logo" src={topscorer.logo} />
+                  <div className="bpw-league-name">{topscorer.league}</div>
+                </div>
+                <div className="bpw-flags">
+                  {leagues.map((v, i, a) => 
+                    <i key={v.id} className={`${v.flag} flag`} 
+                      style={ { ...{marginBottom: 0}, ...(i === a.length - 1 ? {marginRight: 0} : undefined) }}
+                      onClick={() => setLeagueId(v.id)}>                  
+                    </i>)
+                  }
+                </div>
+              </div>          
             </div>
-          </div>
-          <div className="bpw-league">
-            <div className="bpw-logo-and-name">
-              <img className="bpw-logo" src={topScorer.logo} />
-              <div className="bpw-league-name">{topScorer.league}</div>
-            </div>
-            <div className="bpw-flags">
-              {leagues.map((v, i, a) => 
-                <i key={v.id} className={`${v.flag} flag`} 
-                  style={ { ...{marginBottom: 0}, ...(i === a.length - 1 ? {marginRight: 0} : undefined) }}
-                  onClick={() => setLeagueId(v.id)}>                  
-                </i>)}
-            </div>
-          </div>          
-        </div>
       }
     </div>
   );

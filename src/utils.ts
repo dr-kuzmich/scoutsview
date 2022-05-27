@@ -1,4 +1,4 @@
-import { Position, Settings } from "./types";
+import { Position, Settings, Tournament } from "./types";
 
 export const settings: Settings = {
   dashboardMode: {
@@ -6,6 +6,14 @@ export const settings: Settings = {
     full: "full",
   },
 };
+
+export const leagues: Tournament[] = [
+  {id: 39, flag: "england"}, 
+  {id: 140, flag: "spain"}, 
+  {id: 135, flag: "italy"}, 
+  {id: 78, flag: "germany"}, 
+  {id: 61, flag: "france"},
+];
 
 export const positions: Position[] = [
   {
