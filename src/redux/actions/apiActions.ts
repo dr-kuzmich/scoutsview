@@ -13,7 +13,7 @@ const addTopscorers = createAsyncThunk(
 
     const response = await Promise.all(leagues.map(v => getTopscorers(season, v.id)));
 
-    if (response[0].data.errors.requests.length) {
+    if (response[0].data.errors?.requests?.length) {
       throw new Error("Server is unable to provide the data. Please try again later.");
     }
     
