@@ -3,7 +3,7 @@ import { SettingsContext } from "../../App";
 import { useAppSelector } from "../../hooks";
 import "../../styles/tta/Dashboard.css";
 import { Player } from "../../types";
-import Stepper from "../simple/Stepper";
+import Stepper from "../primitives/Stepper";
 
 interface Props {
   selectedPlayer: Player | undefined;

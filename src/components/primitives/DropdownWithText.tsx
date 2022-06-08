@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/simple/DropdownWithText.css";
+import "../../styles/primitives/DropdownWithText.css";
 import { SimpleObject } from "../../types";
 import Dropdown from "./Dropdown";
 

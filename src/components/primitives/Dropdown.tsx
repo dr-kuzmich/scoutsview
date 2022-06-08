@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
-import "../../styles/simple/Dropdown.css";
+import "../../styles/primitives/Dropdown.css";
 import { SimpleObject } from "../../types";
 import { addMouseDownListener } from "../../utils";
 

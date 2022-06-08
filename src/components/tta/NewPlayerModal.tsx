@@ -7,8 +7,8 @@ import { useAppDispatch } from "../../hooks";
 import "../../styles/App.css";
 import "../../styles/tta/NewPlayerModal.css";
 import { Player, Position, Team } from "../../types";
-import DropdownWithText from "../simple/DropdownWithText";
-import InputWithText from "../simple/InputWithText";
+import DropdownWithText from "../primitives/DropdownWithText";
+import InputWithText from "../primitives/InputWithText";
 
 interface Props {
   teams: Team[],

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useAppSelector, useModal } from "../../hooks";
+import { useAppSelector, useModal, useTooltip } from "../../hooks";
 import "../../styles/App.css";
 import "../../styles/tta/TTA.css";
 import { Player } from "../../types";
@@ -23,6 +23,8 @@ const TTA = () => {
     toggle(!!match && !players.length);
   }, [match, players.length]);
 
+  const { tooltip: teamsTooltip, ref: teamsRef } = useTooltip(teams ? `${teams[0].value} - ${teams[1].value}` : "", [teams] || []);
+
   return (
     <>
       <div className="sv-page">
@@ -36,8 +38,13 @@ const TTA = () => {
 
         {!teams ? <MatchSettings /> :
           <>
-            <div className="tta-teams">
-              {`${teams[0].value} - ${teams[1].value}`}
+            <div className="tta-match-info">
+              <div ref={teamsRef} className="tta-teams" title={teamsTooltip}>
+                {`${teams[0].value} - ${teams[1].value}`}
+              </div>
+              <div className="tta-add-info">
+                Date | Place | Weather
+              </div>
             </div>
             <div className="tta-players-and-tools">
               <PlayerList

@@ -18,14 +18,13 @@ const PlayerList = ({ players, selectedPlayer, setSelectedPlayer, toggle }: Prop
   const updatePlayer = () => selectedPlayer && (dispatch(allActions.ttaActions.updatePlayer(selectedPlayer)));
 
   return (
-    <div className="playerlist-players">
+    <div className="playerlist-container">
       {!players.length ? null :
         <>
-          <div className="ui middle aligned divided list">
+          <div className="ui middle aligned divided list playerlist-players">
             {sortBy(players, p => p.id).map(player =>
               <div key={player.id}
                 className={classnames("item playerlist-player", selectedPlayer?.id === player.id && "selected")}
-                style={{ lineHeight: "30px" }}
                 onClick={() => player.id !== selectedPlayer?.id && (updatePlayer(), setSelectedPlayer(player))}
               >
                 <div className="content">

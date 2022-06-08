@@ -5,13 +5,16 @@
 }
 
 .dashboard-lines-cont {
-
+  
 }
 
 .dashboard-line {
   display: flex;
   justify-content: space-between;
   margin-bottom: 6px;
+  align-items: center;
+  font-size: 16px;
+  height: 26px;
 }
 
 .dashboard-line-text {

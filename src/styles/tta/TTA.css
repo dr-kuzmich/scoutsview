@@ -3,9 +3,24 @@
   justify-content: center;
 }
 
+.tta-match-info {
+  display: flex;  
+}
+
 .tta-teams {
   font-size: 20px;
   padding: 10px 10px;
+  flex: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
+.tta-add-info {
+  font-size: 14px;
+  padding: 10px 10px;
+  flex: 50%;
 }
 
 .tta-players-and-tools {

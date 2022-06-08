@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import "../../styles/simple/InputWithText.css";
+import "../../styles/primitives/InputWithText.css";
 
 interface Props {
   text: string;

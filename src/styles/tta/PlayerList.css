@@ -1,12 +1,23 @@
-.playerlist-players {
+.playerlist-container {
   padding: 10px 10px;
   border: 1px solid #000000;
   flex: 50%;
 }
 
+.playerlist-players {
+  overflow-y: auto;
+  max-height: 600px;
+}
+
 .playerlist-player {
   font-size: 16px;
   cursor: pointer;
+  height: 30px;
+}
+
+/* Deletion of the default padding */
+.playerlist-player:first-child {
+  padding-top: 0.21428571em!important;
 }
 
 .playerlist-player.selected {
