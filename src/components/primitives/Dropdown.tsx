@@ -7,11 +7,12 @@ import { addMouseDownListener } from "../../utils";
 interface Props {
   values: SimpleObject[];
   placeholder: string
+  width: number;
   selectedId: string;
   setSelectedId: (value: string) => void;
 }
 
-const Dropdown = ({ values, placeholder, selectedId, setSelectedId }: Props) => {
+const Dropdown = ({ values, placeholder, width, selectedId, setSelectedId }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -22,7 +23,7 @@ const Dropdown = ({ values, placeholder, selectedId, setSelectedId }: Props) => 
 
   return (
     <div ref={ref} className="dropdown-main-cont">
-      <div className="dropdown-cont" onClick={() => setIsVisible(!isVisible)}>
+      <div className="dropdown-cont" style={{width: `${width}px`}} onClick={() => setIsVisible(!isVisible)}>
         <div className="ui small input dropdown-input">
           <input type="text" readOnly placeholder={placeholder} value={values.find(v => v.id === selectedId)?.value ?? ""}/>
         </div>

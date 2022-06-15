@@ -20,7 +20,7 @@ export interface Match {
   team1Id: string;
   date: string;
   place: string;
-  weather: string;
+  weatherId: string;
 }
 
 export interface SimpleObject {

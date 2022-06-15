@@ -23,6 +23,38 @@
   flex: 50%;
 }
 
+.tta-add-info:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.tta-add-info-column {
+  display: flex;
+  float: left;
+}
+
+.tta-aic-left {
+  width: 105px;
+  cursor: default;
+}
+
+.tta-aic-middle {
+  width: 93px;
+  cursor: default;
+}
+
+.tta-aic-right {
+  width: calc(100% - 198px);;
+}
+
+.tta-aic-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
 .tta-players-and-tools {
   display: flex;
 }

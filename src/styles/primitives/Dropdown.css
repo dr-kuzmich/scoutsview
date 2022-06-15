@@ -4,7 +4,7 @@
 
 .dropdown-cont {
   position: relative;
-  width: 250px;
+  /* width: 250px; */
   margin-left: auto;
   display: flex;
   justify-content: flex-end;

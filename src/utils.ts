@@ -1,4 +1,4 @@
-import { Position, Settings, Tournament } from "./types";
+import { Position, Settings, SimpleObject, Tournament } from "./types";
 
 export const settings: Settings = {
   dashboardMode: {
@@ -91,6 +91,33 @@ export const positions: Position[] = [
     value: "Right forward",
     short: "RF",
   },
+];
+
+export const weatherTypes: SimpleObject[] = [
+  {
+    id: "1",
+    value: "Sunny",
+  }, 
+  {
+    id: "2",
+    value: "Cloudy",
+  }, 
+  {
+    id: "3",
+    value: "Rainy",
+  }, 
+  {
+    id: "4",
+    value: "Windy",
+  }, 
+  {
+    id: "5",
+    value: "Foggy",
+  }, 
+  {
+    id: "6",
+    value: "Snowy",
+  }, 
 ];
 
 export const addMouseDownListener = <N>(

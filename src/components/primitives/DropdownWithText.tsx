@@ -7,15 +7,16 @@ interface Props {
   text: string;
   values: SimpleObject[];
   placeholder: string;
+  width: number;
   selectedId: string;
   setSelectedId: (value: string) => void;
 }
 
-const DropdownWithText = ({ text, values, placeholder, selectedId, setSelectedId }: Props) => {
+const DropdownWithText = ({ text, values, placeholder, width, selectedId, setSelectedId }: Props) => {
   return (
     <div className="npm-dropdown-with-text">
       <span className="npm-dropdown-with-text-span">{text}</span>
-      <Dropdown values={values} placeholder={placeholder} selectedId={selectedId} setSelectedId={setSelectedId} />
+      <Dropdown values={values} placeholder={placeholder} width={width} selectedId={selectedId} setSelectedId={setSelectedId} />
     </div>
   );
 };

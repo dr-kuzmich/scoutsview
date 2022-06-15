@@ -9,6 +9,7 @@ import NewPlayerModal from "./NewPlayerModal";
 import PlayerList from "./PlayerList";
 import Dashboard from "./Dashboard";
 import { SettingsContext } from "../../App";
+import { weatherTypes } from "../../utils";
 
 const TTA = () => {
   const [selectedPlayer, setSelectedPlayer] = useState<Player>();
@@ -24,6 +25,7 @@ const TTA = () => {
   }, [match, players.length]);
 
   const { tooltip: teamsTooltip, ref: teamsRef } = useTooltip(teams ? `${teams[0].value} - ${teams[1].value}` : "", [teams] || []);
+  const { tooltip: placeTooltip, ref: placeRef } = useTooltip(match?.place || "", [match?.place] || []);
 
   return (
     <>
@@ -43,7 +45,19 @@ const TTA = () => {
                 {`${teams[0].value} - ${teams[1].value}`}
               </div>
               <div className="tta-add-info">
-                Date | Place | Weather
+                <div className="tta-add-info-column tta-aic-left">
+                  <i className="calendar alternate outline icon"></i>
+                  <div className="tta-aic-text">{match?.date}</div>
+                </div>                
+                <div className="tta-add-info-column tta-aic-middle">
+                  <i className="cloud icon"></i>
+                  {/* TODO Remove arrays in weatherTypes.find (Map instead) and for positions */}
+                  <div className="tta-aic-text">{match?.weatherId.length ? weatherTypes.find(v => v.id === match.weatherId)?.value : "Unknown"}</div>
+                </div>
+                <div className="tta-add-info-column tta-aic-right">
+                  <i className="map marker alternate icon"></i>
+                  <div ref={placeRef} className="tta-aic-text" title={placeTooltip}>{match?.place.length ? match.place : "Unknown"}</div>
+                </div>
               </div>
             </div>
             <div className="tta-players-and-tools">
