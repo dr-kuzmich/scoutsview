@@ -4,8 +4,9 @@
   flex: 50%;
 }
 
-.dashboard-lines-cont {
-  
+.dashboard-lines-cont.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .dashboard-line {
@@ -28,4 +29,15 @@
 
 .dashboard-result {
   margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-result-text {
+  font-size: 20px;
+}
+
+.dashboard-result-button-finish-edit {
+  width: 120px; 
 }

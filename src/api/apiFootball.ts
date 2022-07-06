@@ -3,7 +3,7 @@ import { once } from "lodash";
 
 // https://www.api-football.com/ & https://dashboard.api-football.com/
 const API_KEY = "92a8954a5629cc302e02cbb2074324da";
-const PATH = "/players/topscorers";
+const PATH_TOPSCORERS = "/players/topscorers";
 
 const getInstance = once(() => axios.create({
   baseURL: "https://v3.football.api-sports.io",  
@@ -11,7 +11,7 @@ const getInstance = once(() => axios.create({
 
 export const getTopscorers = async (season: number, leagueId: number) => 
   getInstance().get(
-    `${PATH}?season=${season}&league=${leagueId}`,
+    `${PATH_TOPSCORERS}?season=${season}&league=${leagueId}`,
     {
       "method": "GET",
       "headers": {

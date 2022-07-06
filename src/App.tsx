@@ -1,16 +1,19 @@
 import * as React from "react";
 import Main from "./components/Main";
+import { positions } from "./consts";
+import { settings } from "./settings";
 import "./styles/App.css";
-import { positions, settings } from "./utils";
 
-export const SettingsContext = React.createContext({ 
-  positions: positions,
-  dashboardMode: settings.dashboardMode.full,
-});
+const SETTINGS_DEFAULT = { 
+  positions,
+  dashboardMode: settings.dashboardMode.brief,
+};
+
+export const SettingsContext = React.createContext(SETTINGS_DEFAULT);
 
 const App = () => {
   return (
-    <SettingsContext.Provider value={ { positions: positions, dashboardMode: settings.dashboardMode.brief } }>
+    <SettingsContext.Provider value={ SETTINGS_DEFAULT }>
       <Main />
     </SettingsContext.Provider>
   );

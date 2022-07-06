@@ -22,13 +22,13 @@ const apiReducer = createReducer(initialState, builder => {
       if (state.loading === "pending" && state.currentRequestId === action.meta.requestId) {
         state.loading = "idle";
         action.payload.forEach(v => {
-          state.topscorers[v.statistics[0].league.id] = {
-            photo: v.player.photo,
-            name: `${v.player.firstname} ${v.player.lastname}`,
-            club: v.statistics[0].team.name,
-            goals: v.statistics[0].goals.total,
-            league: v.statistics[0].league.name, 
-            logo: v.statistics[0].league.logo,
+          state.topscorers[v.id] = !v.data ? {} : {
+            photo: v.data.player.photo,
+            name: `${v.data.player.firstname} ${v.data.player.data.lastname}`,
+            club: v.data.statistics[0].team.name,
+            goals: v.data.statistics[0].goals.total,
+            league: v.data.statistics[0].league.name, 
+            logo: v.data.statistics[0].league.logo,
           };
         });
         state.currentRequestId = undefined;

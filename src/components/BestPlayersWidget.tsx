@@ -1,10 +1,11 @@
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
+import { leagues } from "../consts";
 import { useAppDispatch, useAppSelector, useMovable } from "../hooks";
 import allActions from "../redux/actions/allActions";
 import "../styles/BestPlayersWidget.css";
-import { Topscorer } from "../types";
-import { leagues } from "../utils";
+import { SeasonDoesntStart, Topscorer } from "../types";
+import { getCountryByLeagueId, getCurrentSeason } from "../utils";
 
 interface LoadingStatus {
   error: string,
@@ -15,16 +16,15 @@ const message = (text: string) => <div className="bpw-message">{text}</div>;
 
 const BestPlayersWidget = () => {
   const [loadingStatus, setLoadingStatus] = useState<LoadingStatus>({error: "", loading: false});
-  const [topscorer, setTopscorer] = useState<Topscorer>();
+  const [topscorer, setTopscorer] = useState<Topscorer | SeasonDoesntStart>();
   const [leagueId, setLeagueId] = useState(leagues[0].id);
 
   const dispatch = useAppDispatch();
 
   const topscorersLoadingData = useAppSelector(state => state.api);
 
-  // TODO Calculate a valid year
   useEffect(() => {
-    isEmpty(topscorersLoadingData.topscorers) && dispatch(allActions.apiActions.addTopscorers(2021));
+    isEmpty(topscorersLoadingData.topscorers) && dispatch(allActions.apiActions.addTopscorers(getCurrentSeason()));
   }, []);
 
   useEffect(() => {
@@ -47,14 +47,16 @@ const BestPlayersWidget = () => {
         loadingStatus.error.length ? message(loadingStatus.error) : 
           !topscorer ? message("No data from server") :
             <div className="bpw-container">
-              <div className="bpw-photo-and-data">
-                <img className="bpw-photo" src={topscorer.photo} />
-                <div className="bpw-data">              
-                  <div className="bpw-name">{topscorer.name}</div>
-                  <div className="bpw-club">{topscorer.club}</div>
-                  <div className="bpw-goals">{`${topscorer.goals} goals`}</div>
+              { isEmpty(topscorer) ? message(`The season in ${getCountryByLeagueId(leagueId)} doesn't start yet`) :
+                <div className="bpw-photo-and-data">
+                  <img className="bpw-photo" src={topscorer.photo} />
+                  <div className="bpw-data">              
+                    <div className="bpw-name">{topscorer.name}</div>
+                    <div className="bpw-club">{topscorer.club}</div>
+                    <div className="bpw-goals">{`${topscorer.goals} goals`}</div>
+                  </div>
                 </div>
-              </div>
+              }
               <div className="bpw-league">
                 <div className="bpw-logo-and-name">
                   <img className="bpw-logo" src={topscorer.logo} />
@@ -62,7 +64,7 @@ const BestPlayersWidget = () => {
                 </div>
                 <div className="bpw-flags">
                   {leagues.map((v, i, a) => 
-                    <i key={v.id} className={`${v.flag} flag`} 
+                    <i key={v.id} className={`${v.country} flag`} 
                       style={ { ...{marginBottom: 0}, ...(i === a.length - 1 ? {marginRight: 0} : undefined) }}
                       onClick={() => setLeagueId(v.id)}>                  
                     </i>)

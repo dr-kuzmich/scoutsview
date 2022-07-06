@@ -52,6 +52,9 @@ export interface Player extends SimpleObject {
   tacklesMistaken: number;
 }
 
+// TODO Do I need any information here?
+export type SeasonDoesntStart = Record<string, never>;
+
 interface LoadingData {
   loading: LoadingStatus,
   currentRequestId?: string,
@@ -63,7 +66,7 @@ export interface TopscorersLoadingData extends LoadingData {
 }
 
 export interface Topscorers {
-  [key: string]: Topscorer
+  [key: string]: Topscorer | SeasonDoesntStart
 }
 
 export interface Topscorer {
@@ -77,5 +80,5 @@ export interface Topscorer {
 
 export interface Tournament {
   id: number;
-  flag: string;
+  country: string;
 }

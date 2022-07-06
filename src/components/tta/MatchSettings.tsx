@@ -4,7 +4,7 @@ import allActions from "../../redux/actions/allActions";
 import { useAppDispatch } from "../../hooks";
 import "../../styles/tta/MatchSettings.css";
 import Dropdown from "../primitives/Dropdown";
-import { weatherTypes } from "../../utils";
+import { weatherTypes } from "../../consts";
 
 const MatchSettings = () => {
   const [team0Name, setTeam0Name] = useState("");

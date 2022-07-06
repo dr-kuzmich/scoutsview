@@ -9,9 +9,10 @@ import NewPlayerModal from "./NewPlayerModal";
 import PlayerList from "./PlayerList";
 import Dashboard from "./Dashboard";
 import { SettingsContext } from "../../App";
-import { weatherTypes } from "../../utils";
+import { weatherTypes } from "../../consts";
 
 const TTA = () => {
+  // TODO id instead of player (and remove setSelectedPlayer from Dashboard)
   const [selectedPlayer, setSelectedPlayer] = useState<Player>();
 
   const { isShowing, toggle } = useModal();

@@ -13,6 +13,25 @@
   font-size: 16px;
   cursor: pointer;
   height: 30px;
+  width: 100%;
+}
+
+.playerlist-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.playerlist-icon.finished {
+  color: olivedrab;
+}
+
+.playerlist-icon.process {
+  color: dodgerblue;
+}
+
+.playerlist-icon.new {
+  color: peru;
 }
 
 /* Deletion of the default padding */

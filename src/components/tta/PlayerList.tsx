@@ -1,8 +1,6 @@
 import classnames from "classnames";
 import { sortBy } from "lodash";
 import React from "react";
-import allActions from "../../redux/actions/allActions";
-import { useAppDispatch } from "../../hooks";
 import "../../styles/tta/PlayerList.css";
 import { Player } from "../../types";
 
@@ -14,8 +12,8 @@ interface Props {
 }
 
 const PlayerList = ({ players, selectedPlayer, setSelectedPlayer, toggle }: Props) => {  
-  const dispatch = useAppDispatch();
-  const updatePlayer = () => selectedPlayer && (dispatch(allActions.ttaActions.updatePlayer(selectedPlayer)));
+  // const dispatch = useAppDispatch();
+  // const updatePlayer = () => selectedPlayer && (dispatch(allActions.ttaActions.updatePlayer(selectedPlayer)));
 
   return (
     <div className="playerlist-container">
@@ -24,17 +22,20 @@ const PlayerList = ({ players, selectedPlayer, setSelectedPlayer, toggle }: Prop
           <div className="ui middle aligned divided list playerlist-players">
             {sortBy(players, p => p.id).map(player =>
               <div key={player.id}
-                className={classnames("item playerlist-player", selectedPlayer?.id === player.id && "selected")}
-                onClick={() => player.id !== selectedPlayer?.id && (updatePlayer(), setSelectedPlayer(player))}
+                className="item" style={{ display: "flex", alignItems: "baseline" }}
+                onClick={() => player.id !== selectedPlayer?.id && (/*updatePlayer(), */setSelectedPlayer(player))}
               >
-                <div className="content">
+                <div className={classnames("content playerlist-player", selectedPlayer?.id === player.id && "selected")}>
                   <span>{player.value}</span>
                 </div>
+                {player.status === "finished" ? <i className="check icon playerlist-icon finished" title="Finished" /> : 
+                  player.status === "new" ? <i className="meh outline icon playerlist-icon new" title="New" /> : 
+                    <i className="pencil alternate icon playerlist-icon process" title="In process" />}
               </div>
             )}
           </div>
           <div className="playerlist-button-container-add-player">
-            <button className="ui button mini playerlist-button-add-player" onClick={() => (updatePlayer(), toggle(true))}>
+            <button className="ui button mini playerlist-button-add-player" onClick={() => (/*updatePlayer(), */toggle(true))}>
               Add a new player
             </button>
           </div>
