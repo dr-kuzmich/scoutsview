@@ -1,10 +1,12 @@
 import classnames from "classnames";
-import React, { useContext, useEffect, useState } from "react";
+import { flow } from "lodash";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { VictoryChart, VictoryLine, VictoryPolarAxis, VictoryTheme } from "victory";
 import { SettingsContext } from "../../App";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import allActions from "../../redux/actions/allActions";
 import "../../styles/tta/Dashboard.css";
-import { Player } from "../../types";
+import { ChartData, Player } from "../../types";
 import Stepper from "../primitives/Stepper";
 
 interface Props {
@@ -18,6 +20,24 @@ const Dashboard = ({ selectedPlayer, setSelectedPlayer }: Props) => {
   const [ttaResult, setTTAResult] = useState(0);
 
   const dispatch = useAppDispatch();
+
+  const chartData: ChartData | undefined = useMemo(() => !selectedPlayer || selectedPlayer.status === "new" ? undefined : 
+    flow(
+      () => [
+        { x: "shots", y: selectedPlayer.shotsSuccessful - selectedPlayer.shotsMistaken },
+        { x: "passes", y: selectedPlayer.passesSuccessful - selectedPlayer.passesMistaken },
+        { x: "air duels", y: selectedPlayer.airDuelsSuccessful - selectedPlayer.airDuelsMistaken },
+        { x: "dribblings", y: selectedPlayer.dribblingsSuccessful - selectedPlayer.dribblingsMistaken },
+        { x: "tackles", y: selectedPlayer.tacklesSuccessful - selectedPlayer.tacklesMistaken },
+      ],
+      coords => ({ coords, minMax: coords.reduce((acc, cur) => {
+        if (acc.min > cur.y) 
+          acc.min = cur.y;
+        if (acc.max < cur.y) 
+          acc.max = cur.y;  
+        return acc;  
+      }, { min: Infinity, max: -Infinity }) })
+    )(), [selectedPlayer]);
   
   useEffect(() => {
     if(selectedPlayer?.status === "new") {
@@ -92,6 +112,43 @@ const Dashboard = ({ selectedPlayer, setSelectedPlayer }: Props) => {
                   </div>              
                 </div>
               </div>
+
+              {!chartData ? null :
+                <div>
+                  <VictoryChart polar
+                    domain={{ y: [chartData.minMax.min, chartData.minMax.max]}}
+                    theme={VictoryTheme.material}
+                  >                    
+                    {
+                      chartData.coords.map((d, i) => (
+                        <VictoryPolarAxis dependentAxis
+                          key={i}
+                          label={d.x}
+                          labelPlacement="perpendicular"
+                          style={{ tickLabels: { fill: "none" }, axis: { stroke: "none" } }}
+                          axisValue={d.x}
+                          standalone={false}
+                          theme={VictoryTheme.material}
+                        />
+                      ))
+                    } 
+
+                    <VictoryPolarAxis 
+                      theme={VictoryTheme.material}
+                      tickFormat={[]}
+                    />
+                  
+                    <VictoryLine
+                      data={chartData.coords}
+                      style={{
+                        data: { stroke: "#c43a31" },
+                      }}
+                    />
+                  </VictoryChart>
+
+                </div>  
+              }
+
               {selectedPlayer.status === "new" ? null :
                 <div className="dashboard-result">
                   <span className="dashboard-result-text">{`TTA successful actions: ${ttaResult}%`}</span>

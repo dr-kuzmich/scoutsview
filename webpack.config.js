@@ -37,6 +37,7 @@ module.exports = {
       },
     ],
   },
+  ignoreWarnings: [{ message: /source-map-loader/ }], // Temporary solution to get rid of bunch of warnings
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),

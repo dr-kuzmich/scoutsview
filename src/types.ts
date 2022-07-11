@@ -82,3 +82,8 @@ export interface Tournament {
   id: number;
   country: string;
 }
+
+export interface ChartData {
+  coords: Array<{ x: string, y: number }>;
+  minMax: { min: number, max: number };
+}
