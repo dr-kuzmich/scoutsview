@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/primitives/Stepper.css";
+import "../../styles/primitives/Stepper.scss";
 
 interface Props {
   value: number;

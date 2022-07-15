@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 .bpw-container {
   display: flex;
   flex-direction: column;
@@ -10,8 +12,8 @@
   width: 240px;
   height: 100px;
   padding: 10px;
-  background: rgb(224, 225, 226);
-  border: 1px solid rgb(124, 124, 124);
+  background: $white_grey_1;
+  border: 1px solid $grey;
   border-radius: 5px;
 }
 

@@ -5,7 +5,7 @@ import { VictoryChart, VictoryLine, VictoryPolarAxis, VictoryTheme } from "victo
 import { SettingsContext } from "../../App";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import allActions from "../../redux/actions/allActions";
-import "../../styles/tta/Dashboard.css";
+import "../../styles/tta/Dashboard.scss";
 import { ChartData, Player } from "../../types";
 import Stepper from "../primitives/Stepper";
 

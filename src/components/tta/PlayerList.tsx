@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { sortBy } from "lodash";
 import React from "react";
-import "../../styles/tta/PlayerList.css";
+import "../../styles/tta/PlayerList.scss";
 import { Player } from "../../types";
 
 interface Props {

@@ -2,7 +2,7 @@ import * as React from "react";
 import Main from "./components/Main";
 import { positions } from "./consts";
 import { settings } from "./settings";
-import "./styles/App.css";
+import "./styles/App.scss";
 
 const SETTINGS_DEFAULT = { 
   positions,

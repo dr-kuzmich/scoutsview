@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { leagues } from "../consts";
 import { useAppDispatch, useAppSelector, useMovable } from "../hooks";
 import allActions from "../redux/actions/allActions";
-import "../styles/BestPlayersWidget.css";
+import "../styles/BestPlayersWidget.scss";
 import { SeasonDoesntStart, Topscorer } from "../types";
 import { getCountryByLeagueId, getCurrentSeason } from "../utils";
 

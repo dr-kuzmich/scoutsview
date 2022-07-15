@@ -2,7 +2,7 @@ import classnames from "classnames";
 import React, { useState } from "react";
 import allActions from "../../redux/actions/allActions";
 import { useAppDispatch } from "../../hooks";
-import "../../styles/tta/MatchSettings.css";
+import "../../styles/tta/MatchSettings.scss";
 import Dropdown from "../primitives/Dropdown";
 import { weatherTypes } from "../../consts";
 

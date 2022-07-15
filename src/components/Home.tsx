@@ -1,7 +1,7 @@
 import React from "react";
 import bgImage from "../img/soccer.png";
-import "../styles/App.css";
-import "../styles/Home.css";
+import "../styles/App.scss";
+import "../styles/Home.scss";
 import BestPlayersWidget from "./BestPlayersWidget";
 import Navigation from "./Navigation";
 

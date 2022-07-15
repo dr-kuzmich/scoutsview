@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useAppSelector, useModal, useTooltip } from "../../hooks";
-import "../../styles/App.css";
-import "../../styles/tta/TTA.css";
+import "../../styles/App.scss";
+import "../../styles/tta/TTA.scss";
 import { Player } from "../../types";
 import Navigation from "../Navigation";
 import MatchSettings from "./MatchSettings";

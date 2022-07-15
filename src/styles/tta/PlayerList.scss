@@ -1,6 +1,8 @@
+@import "../colors.scss";
+
 .playerlist-container {
   padding: 10px 10px;
-  border: 1px solid #000000;
+  border: 1px solid $black;
   flex: 50%;
 }
 
@@ -23,15 +25,15 @@
 }
 
 .playerlist-icon.finished {
-  color: olivedrab;
+  color: $green_1;
 }
 
 .playerlist-icon.process {
-  color: dodgerblue;
+  color: $blue_0;
 }
 
 .playerlist-icon.new {
-  color: peru;
+  color: $orange;
 }
 
 /* Deletion of the default padding */
@@ -40,7 +42,7 @@
 }
 
 .playerlist-player.selected {
-  color: blue;
+  color: $blue_1;
   font-weight: bold;
 }
 

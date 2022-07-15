@@ -1,6 +1,8 @@
+@import "../colors.scss";
+
 .dashboard-contaiter {
   padding: 10px 10px;
-  border: 1px solid #000000;
+  border: 1px solid $black;
   flex: 50%;
 }
 

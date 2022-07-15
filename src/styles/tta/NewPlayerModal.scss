@@ -1,6 +1,8 @@
+@import "../colors.scss";
+
 .npm-modal {
   /* z-index: 100; */
-  background: white;
+  background: $white;
   position: relative;
   top: 50%;
   left: 50%;
