@@ -21,12 +21,13 @@
   font-size: 14px;
   padding: 10px 10px;
   flex: 50%;
-}
 
-.tta-add-info:after {
-  content: "";
-  display: table;
-  clear: both;
+  // Don't remember why I use this :)
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 .tta-add-info-column {

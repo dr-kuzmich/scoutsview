@@ -16,10 +16,10 @@
   position: absolute;
   z-index: 100;
   width: 100%;
-}
 
-.dropdown-menu-cont.hidden {
-  display: none;
+  &.hidden {
+    display: none;
+  }
 }
 
 .dropdown-menu {

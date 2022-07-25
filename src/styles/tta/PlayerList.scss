@@ -22,28 +22,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  &.new {
+    color: $orange;
+  }
+
+  &.process {
+    color: $blue_0;
+  }
+
+  &.finished {
+    color: $green_1;
+  }
 }
 
-.playerlist-icon.finished {
-  color: $green_1;
-}
+.playerlist-player {
+  /* Removing of the default padding */
+  &:first-child {
+    padding-top: 0.21428571em!important;
+  }
 
-.playerlist-icon.process {
-  color: $blue_0;
-}
-
-.playerlist-icon.new {
-  color: $orange;
-}
-
-/* Deletion of the default padding */
-.playerlist-player:first-child {
-  padding-top: 0.21428571em!important;
-}
-
-.playerlist-player.selected {
-  color: $blue_1;
-  font-weight: bold;
+  &.selected {
+    color: $blue_1;
+    font-weight: bold;
+  }
 }
 
 .playerlist-button-container-add-player {

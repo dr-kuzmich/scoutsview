@@ -31,12 +31,12 @@ const Dashboard = ({ selectedPlayer, setSelectedPlayer }: Props) => {
         { x: "tackles", y: selectedPlayer.tacklesSuccessful - selectedPlayer.tacklesMistaken },
       ],
       coords => ({ coords, minMax: coords.reduce((acc, cur) => {
-        if (acc.min > cur.y) 
+        if (acc.min > cur.y && cur.y < 0) 
           acc.min = cur.y;
         if (acc.max < cur.y) 
           acc.max = cur.y;  
         return acc;  
-      }, { min: Infinity, max: -Infinity }) })
+      }, { min: 0, max: 0 }) })
     )(), [selectedPlayer]);
   
   useEffect(() => {
