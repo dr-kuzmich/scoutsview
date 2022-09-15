@@ -1,20 +1,21 @@
 @import "./colors.scss";
 
 .bpw-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.bpw-top-scorers {
   position: absolute;
   width: 240px;
   height: 100px;
   padding: 10px;
   background: $white_grey_1;
   border: 1px solid $grey;
-  border-radius: 5px;
+  border-radius: 5px;  
+  box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, .1);
+}
+
+.bpw-top-scorer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .bpw-message {

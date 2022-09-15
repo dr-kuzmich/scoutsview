@@ -40,13 +40,13 @@ const BestPlayersWidget = () => {
   const { divRef, newCoord, enableDragMode, disableDragMode } = useMovable(90, 20);
 
   return (
-    <div ref={divRef} className="bpw-top-scorers" style={{left: newCoord.x + "px", top: newCoord.y + "px"}}
+    <div ref={divRef} className="bpw-container" style={{left: newCoord.x + "px", top: newCoord.y + "px"}}
       onMouseDown={enableDragMode} onMouseUp={disableDragMode}
     >
       {loadingStatus.loading ? message("Data is loading. Please wait") : 
         loadingStatus.error.length ? message(loadingStatus.error) : 
           !topscorer ? message("No data from server") :
-            <div className="bpw-container">
+            <div className="bpw-top-scorer">
               { isEmpty(topscorer) ? message(`The season in ${getCountryByLeagueId(leagueId)} doesn't start yet`) :
                 <div className="bpw-photo-and-data">
                   <img className="bpw-photo" src={topscorer.photo} />

@@ -49,8 +49,6 @@ export const useMovable = (x: number, y: number) => {
   return { divRef, newCoord, enableDragMode, disableDragMode };
 };
 
-// It works here, but this solution is not universal, because useEffect doesn't react to ref.current changes.
-// Therefore, perhaps, we need to have another realization (a kind of forse update, for example) for other tasks.
 export const useTooltip = (text: string, deps: React.DependencyList = []) => {
   const [tooltip, setTooltip] = useState("");
   const ref = useRef<HTMLDivElement>(null);

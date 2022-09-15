@@ -34,13 +34,13 @@ const PlayerList = ({ players, selectedPlayer, setSelectedPlayer, toggle }: Prop
               </div>
             )}
           </div>
-          <div className="playerlist-button-container-add-player">
-            <button className="ui button mini playerlist-button-add-player" onClick={() => (/*updatePlayer(), */toggle(true))}>
-              Add a new player
-            </button>
-          </div>
         </>
       }
+      <div className="playerlist-button-container-add-player">
+        <button className="ui button mini playerlist-button-add-player" onClick={() => toggle(true)}>
+              Add a new player
+        </button>
+      </div>
     </div>
   );
 };

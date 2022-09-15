@@ -14,10 +14,11 @@ interface Props {
   teams: Team[],
   positions: Position[],
   isShowing: boolean,
+  toggle: (v: boolean) => void;
   setSelectedPlayer: (v: Player) => void
 }
 
-const NewPlayerModal = ({ teams, positions, isShowing, setSelectedPlayer }: Props) => {
+const NewPlayerModal = ({ teams, positions, isShowing, toggle, setSelectedPlayer }: Props) => {
   const [name, setName] = useState("");
   const [teamId, setTeamId] = useState("");
   const [positionId, setPositionId] = useState("");
@@ -32,8 +33,8 @@ const NewPlayerModal = ({ teams, positions, isShowing, setSelectedPlayer }: Prop
     ReactDOM.createPortal(
       <>
         <div className="sv-modal-overlay"/>
-        <div className="sv-modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
-          <div className="npm-modal">
+        <div className="sv-modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog" onClick={() => toggle(false)}>
+          <div className="npm-modal" onClick={e => e.stopPropagation()}>
             <div className="sv-modal-header">
               <h3 className="ui header">Add a new player</h3>
             </div>
@@ -65,6 +66,7 @@ const NewPlayerModal = ({ teams, positions, isShowing, setSelectedPlayer }: Prop
                     };
                     dispatch(allActions.ttaActions.addPlayer(player));
                     setSelectedPlayer(player);
+                    toggle(false);
                   }
                 }}>
                 Finish

@@ -2,6 +2,15 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/Navigation.scss";
 
+const getAboutLink = () => 
+  <div className="main-navigation-about">
+    <Link to='/about'>
+      <button className="circular ui icon button">
+        <i className="icon question circle"></i>
+      </button>
+    </Link>
+  </div>;
+
 const Navigation = () => {
   const { pathname } = useLocation();
 
@@ -20,13 +29,7 @@ const Navigation = () => {
               </Link>
             </div>
           </div>
-          <div className="main-navigation-about">
-            <Link to='/about'>
-              <button className="circular ui icon button">
-                <i className="icon question circle"></i>
-              </button>
-            </Link>
-          </div>
+          { getAboutLink() }
         </div>
       </>
     );
@@ -42,15 +45,7 @@ const Navigation = () => {
             </button>
           </Link>
         </div>
-        {pathname === "/about" ? null :
-          <div className="main-navigation-about">
-            <Link to='/about'>
-              <button className="circular ui icon button">
-                <i className="icon question circle"></i>
-              </button>
-            </Link>
-          </div>
-        }
+        { pathname === "/about" ? null : getAboutLink() }
       </div>
     );
   };

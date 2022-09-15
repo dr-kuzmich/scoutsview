@@ -22,8 +22,8 @@ const TTA = () => {
   const { match, teams, players } = useAppSelector(state => state.tta);
 
   useEffect(() => {
-    toggle(!!match && !players.length);
-  }, [match, players.length]);
+    !players.length && toggle(!!match);
+  }, [match]);
 
   const { tooltip: teamsTooltip, ref: teamsRef } = useTooltip(teams ? `${teams[0].value} - ${teams[1].value}` : "", [teams] || []);
   const { tooltip: placeTooltip, ref: placeRef } = useTooltip(match?.place || "", [match?.place] || []);
@@ -79,6 +79,7 @@ const TTA = () => {
           teams={teams} 
           positions={positions} 
           isShowing={isShowing}
+          toggle={toggle}
           setSelectedPlayer={setSelectedPlayer} 
         />
       }

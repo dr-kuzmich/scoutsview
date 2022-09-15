@@ -24,7 +24,7 @@ const apiReducer = createReducer(initialState, builder => {
         action.payload.forEach(v => {
           state.topscorers[v.id] = !v.data ? {} : {
             photo: v.data.player.photo,
-            name: `${v.data.player.firstname} ${v.data.player.data.lastname}`,
+            name: `${v.data.player.firstname} ${v.data.player.lastname}`,
             club: v.data.statistics[0].team.name,
             goals: v.data.statistics[0].goals.total,
             league: v.data.statistics[0].league.name, 
